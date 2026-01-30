@@ -16,6 +16,8 @@
             overflow: hidden;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             color: #fff;
+            cursor: default;
+            user-select: none;
         }
 
         #canvas {
@@ -72,41 +74,9 @@
             }
         }
 
-        .login-btn {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 99;
-            opacity: 0;
-            animation: btnAppear 1s ease 4s forwards;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 1rem 3rem;
-            font-size: 1.2rem;
-            color: #fff;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .login-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translate(-50%, -50%) scale(1.05);
-        }
-
-        @keyframes btnAppear {
-            to {
-                opacity: 1;
-            }
-        }
-
         .sidebar-btn {
             position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
+            left: 20px;
             z-index: 98;
             opacity: 0;
             pointer-events: none;
@@ -121,14 +91,123 @@
             font-size: 1rem;
         }
 
-        .sidebar-btn.show {
-            opacity: 1;
-            pointer-events: all;
-        }
-
         .sidebar-btn:hover {
             background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-50%) translateX(-5px);
+            transform: translateX(5px);
+        }
+
+        #ipBtn {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #ipBtn:hover {
+            transform: translateY(-50%) translateX(5px);
+        }
+
+        #numberBtn {
+            top: calc(50% + 80px);
+            transform: translateY(-50%);
+        }
+
+        #numberBtn:hover {
+            transform: translateY(-50%) translateX(5px);
+        }
+
+        #passwordBtn {
+            top: calc(50% + 160px);
+            transform: translateY(-50%);
+        }
+
+        #passwordBtn:hover {
+            transform: translateY(-50%) translateX(5px);
+        }
+
+        #domainBtn {
+            top: calc(50% + 240px);
+            transform: translateY(-50%);
+        }
+
+        #domainBtn:hover {
+            transform: translateY(-50%) translateX(5px);
+        }
+
+        #emailBtn {
+            top: calc(50% + 320px);
+            transform: translateY(-50%);
+        }
+
+        #emailBtn:hover {
+            transform: translateY(-50%) translateX(5px);
+        }
+
+        #urlBtn {
+            top: calc(50% - 320px);
+            transform: translateY(-50%);
+        }
+
+        #urlBtn:hover {
+            transform: translateY(-50%) translateX(5px);
+        }
+
+        #speedBtn {
+            top: calc(50% - 240px);
+            transform: translateY(-50%);
+        }
+
+        #speedBtn:hover {
+            transform: translateY(-50%) translateX(5px);
+        }
+
+        #hashBtn {
+            top: calc(50% - 160px);
+            transform: translateY(-50%);
+        }
+
+        #hashBtn:hover {
+            transform: translateY(-50%) translateX(5px);
+        }
+
+        #proxyBtn {
+            top: calc(50% - 80px);
+            transform: translateY(-50%);
+        }
+
+        #proxyBtn:hover {
+            transform: translateY(-50%) translateX(5px);
+        }
+
+        #settingsBtn {
+            top: calc(50% + 400px);
+            transform: translateY(-50%);
+        }
+
+        #settingsBtn:hover {
+            transform: translateY(-50%) translateX(5px);
+        }
+
+        .login-btn {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 150;
+            opacity: 0;
+            pointer-events: none;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            color: #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%) scale(1.05);
         }
 
         .modal {
@@ -232,12 +311,12 @@
             border-radius: 10px;
             padding: 1rem;
             margin-top: 1rem;
-            min-height: 150px;
-            max-height: 300px;
+            min-height: 200px;
+            max-height: 500px;
             overflow-y: auto;
             font-family: 'Courier New', monospace;
             font-size: 0.85rem;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
         .output-box::-webkit-scrollbar {
@@ -276,13 +355,51 @@
             opacity: 1;
             pointer-events: all;
         }
+
+        .bg-option {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .bg-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .bg-option.active {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .bg-option-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .bg-option-desc {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
     </style>
 </head>
 <body>
     <canvas id="canvas"></canvas>
     <div class="logo">VERISED</div>
     <button class="login-btn" id="loginBtn">Войти</button>
-    <button class="sidebar-btn" id="ipBtn">IP</button>
+    <button class="sidebar-btn" id="urlBtn">🔗 URL</button>
+    <button class="sidebar-btn" id="speedBtn">📊 Speed</button>
+    <button class="sidebar-btn" id="hashBtn">🔍 Hash</button>
+    <button class="sidebar-btn" id="proxyBtn">🌐 Proxy</button>
+    <button class="sidebar-btn" id="ipBtn">🌐 IP</button>
+    <button class="sidebar-btn" id="numberBtn">📱 Number</button>
+    <button class="sidebar-btn" id="passwordBtn">🔐 Password</button>
+    <button class="sidebar-btn" id="domainBtn">🌍 Domain</button>
+    <button class="sidebar-btn" id="emailBtn">📧 Email</button>
+    <button class="sidebar-btn" id="settingsBtn">⚙️ Settings</button>
 
     <div class="overlay" id="overlay"></div>
     <div class="modal" id="modal">
@@ -292,10 +409,50 @@
         </div>
         <div class="input-group">
             <label>IP адрес</label>
-            <input type="text" class="input-field" id="ipInput" placeholder="1.1.1.1" value="1.1.1.1">
+            <div style="display: flex; gap: 0.5rem;">
+                <input type="text" class="input-field" id="ipInput" placeholder="1.1.1.1" value="1.1.1.1" style="flex: 1;">
+                <button class="search-btn" id="myIpBtn" style="width: auto; padding: 0.75rem 1.5rem; margin: 0;">My IP</button>
+            </div>
         </div>
         <button class="search-btn" id="searchBtn">Поиск</button>
         <div class="output-box" id="output">Введите IP адрес и нажмите "Поиск"</div>
+    </div>
+
+    <div class="modal" id="settingsModal">
+        <div class="modal-header">
+            <div class="modal-title">Настройки фона</div>
+            <button class="close-btn" id="closeSettingsBtn">&times;</button>
+        </div>
+        <div class="bg-option active" data-bg="particles">
+            <div class="bg-option-title">1. Частицы (текущий)</div>
+            <div class="bg-option-desc">Интерактивные частицы, реагирующие на мышку</div>
+        </div>
+        <div class="bg-option" data-bg="waves">
+            <div class="bg-option-title">2. Волны</div>
+            <div class="bg-option-desc">Плавающие волновые объекты с эффектом глубины</div>
+        </div>
+        <div class="bg-option" data-bg="matrix">
+            <div class="bg-option-title">3. Матрица</div>
+            <div class="bg-option-desc">Падающие символы в стиле Matrix</div>
+        </div>
+        <div class="bg-option" data-bg="stars">
+            <div class="bg-option-title">4. Звёздное небо</div>
+            <div class="bg-option-desc">Мерцающие звёзды с эффектом параллакса</div>
+        </div>
+    </div>
+
+    <div class="modal" id="numberModal">
+        <div class="modal-header">
+            <div class="modal-title">Phone Number Lookup</div>
+            <button class="close-btn" id="closeNumberBtn">&times;</button>
+        </div>
+        <div class="input-group">
+            <label>Номер телефона</label>
+            <input type="text" class="input-field" id="phoneInput" placeholder="+79991234567">
+            <div style="font-size: 0.75rem; opacity: 0.6; margin-top: 0.25rem;">Формат: +[код страны][номер]</div>
+        </div>
+        <button class="search-btn" id="searchPhoneBtn">Поиск</button>
+        <div class="output-box" id="phoneOutput">Введите номер телефона в международном формате</div>
     </div>
 
     <script>
@@ -396,11 +553,46 @@
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
+            if (currentBg === 'particles') {
+                for (let i = 0; i < particles.length; i++) {
+                    if (particles[i].update) particles[i].update();
+                    if (particles[i].draw) particles[i].draw();
+                }
+                connect();
+            } else if (currentBg === 'waves') {
+                particles.forEach(p => {
+                    p.x += p.speedX;
+                    p.y += p.speedY;
+                    if (p.x < -p.size) p.x = canvas.width + p.size;
+                    if (p.x > canvas.width + p.size) p.x = -p.size;
+                    if (p.y < -p.size) p.y = canvas.height + p.size;
+                    if (p.y > canvas.height + p.size) p.y = -p.size;
+                    
+                    ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+            } else if (currentBg === 'matrix') {
+                particles.forEach(p => {
+                    p.y += p.speed;
+                    if (p.y > canvas.height) p.y = 0;
+                    
+                    ctx.fillStyle = 'rgba(0, 255, 0, 0.8)';
+                    ctx.font = '15px monospace';
+                    ctx.fillText(p.chars[Math.floor(Math.random() * p.chars.length)], p.x, p.y);
+                });
+            } else if (currentBg === 'stars') {
+                particles.forEach(p => {
+                    p.twinkle += p.twinkleSpeed;
+                    const opacity = (Math.sin(p.twinkle) + 1) / 2;
+                    ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fill();
+                });
             }
-            connect();
+            
             requestAnimationFrame(animate);
         }
 
@@ -409,24 +601,46 @@
             mouse.y = e.y;
         });
 
+        let currentBg = 'particles';
         init();
         animate();
+
+        // Show buttons after logo animation
+        setTimeout(() => {
+            document.getElementById('loginBtn').style.opacity = '1';
+            document.getElementById('loginBtn').style.pointerEvents = 'all';
+        }, 4000);
 
         // UI Logic
         const loginBtn = document.getElementById('loginBtn');
         const ipBtn = document.getElementById('ipBtn');
+        const settingsBtn = document.getElementById('settingsBtn');
+        const numberBtn = document.getElementById('numberBtn');
         const modal = document.getElementById('modal');
+        const settingsModal = document.getElementById('settingsModal');
+        const numberModal = document.getElementById('numberModal');
         const overlay = document.getElementById('overlay');
         const closeBtn = document.getElementById('closeBtn');
+        const closeSettingsBtn = document.getElementById('closeSettingsBtn');
+        const closeNumberBtn = document.getElementById('closeNumberBtn');
         const searchBtn = document.getElementById('searchBtn');
+        const myIpBtn = document.getElementById('myIpBtn');
         const ipInput = document.getElementById('ipInput');
         const output = document.getElementById('output');
+        const searchPhoneBtn = document.getElementById('searchPhoneBtn');
+        const phoneInput = document.getElementById('phoneInput');
+        const phoneOutput = document.getElementById('phoneOutput');
 
         loginBtn.addEventListener('click', () => {
             loginBtn.style.opacity = '0';
             loginBtn.style.pointerEvents = 'none';
+            
+            // Show sidebar buttons after login
             setTimeout(() => {
-                ipBtn.classList.add('show');
+                document.querySelectorAll('.sidebar-btn').forEach(btn => {
+                    btn.style.opacity = '1';
+                    btn.style.pointerEvents = 'all';
+                });
             }, 300);
         });
 
@@ -435,15 +649,125 @@
             overlay.classList.add('show');
         });
 
+        settingsBtn.addEventListener('click', () => {
+            settingsModal.classList.add('show');
+            overlay.classList.add('show');
+        });
+
+        numberBtn.addEventListener('click', () => {
+            numberModal.classList.add('show');
+            overlay.classList.add('show');
+        });
+
         closeBtn.addEventListener('click', () => {
             modal.classList.remove('show');
             overlay.classList.remove('show');
         });
 
-        overlay.addEventListener('click', () => {
-            modal.classList.remove('show');
+        closeSettingsBtn.addEventListener('click', () => {
+            settingsModal.classList.remove('show');
             overlay.classList.remove('show');
         });
+
+        closeNumberBtn.addEventListener('click', () => {
+            numberModal.classList.remove('show');
+            overlay.classList.remove('show');
+        });
+
+        overlay.addEventListener('click', () => {
+            modal.classList.remove('show');
+            settingsModal.classList.remove('show');
+            numberModal.classList.remove('show');
+            overlay.classList.remove('show');
+        });
+
+        // My IP button
+        myIpBtn.addEventListener('click', async () => {
+            myIpBtn.textContent = '...';
+            myIpBtn.disabled = true;
+            
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                ipInput.value = data.ip;
+                myIpBtn.textContent = 'My IP';
+                myIpBtn.disabled = false;
+            } catch (error) {
+                myIpBtn.textContent = 'Ошибка';
+                setTimeout(() => {
+                    myIpBtn.textContent = 'My IP';
+                    myIpBtn.disabled = false;
+                }, 2000);
+            }
+        });
+
+        // Background selection
+        document.querySelectorAll('.bg-option').forEach(option => {
+            option.addEventListener('click', () => {
+                document.querySelectorAll('.bg-option').forEach(o => o.classList.remove('active'));
+                option.classList.add('active');
+                currentBg = option.dataset.bg;
+                switchBackground(currentBg);
+            });
+        });
+
+        function switchBackground(type) {
+            currentBg = type;
+            particles = [];
+            
+            if (type === 'particles') {
+                init();
+            } else if (type === 'waves') {
+                initWaves();
+            } else if (type === 'matrix') {
+                initMatrix();
+            } else if (type === 'stars') {
+                initStars();
+            }
+        }
+
+        function initWaves() {
+            particles = [];
+            for (let i = 0; i < 20; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 60 + 40,
+                    speedX: Math.random() * 0.5 - 0.25,
+                    speedY: Math.random() * 0.5 - 0.25,
+                    opacity: Math.random() * 0.3 + 0.1,
+                    type: 'wave'
+                });
+            }
+        }
+
+        function initMatrix() {
+            particles = [];
+            const columns = Math.floor(canvas.width / 20);
+            for (let i = 0; i < columns; i++) {
+                particles.push({
+                    x: i * 20,
+                    y: Math.random() * canvas.height,
+                    speed: Math.random() * 3 + 2,
+                    chars: '01',
+                    type: 'matrix'
+                });
+            }
+        }
+
+        function initStars() {
+            particles = [];
+            for (let i = 0; i < 200; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 2 + 0.5,
+                    twinkle: Math.random() * Math.PI * 2,
+                    twinkleSpeed: Math.random() * 0.05 + 0.02,
+                    type: 'star'
+                });
+            }
+        }
 
         searchBtn.addEventListener('click', async () => {
             const ip = ipInput.value.trim();
@@ -452,38 +776,247 @@
                 return;
             }
 
-            output.innerHTML = '<div class="loading">Поиск...</div>';
+            output.innerHTML = '<div class="loading">Поиск данных...</div>';
             
             try {
-                const response = await fetch(`https://ipapi.co/${ip}/json/`);
-                const data = await response.json();
+                // Получаем данные из нескольких источников
+                const [ipwhoData, ipApiData] = await Promise.all([
+                    fetch(`https://ipwho.is/${ip}`).then(r => r.json()),
+                    fetch(`https://ipapi.co/${ip}/json/`).then(r => r.json()).catch(() => null)
+                ]);
                 
-                if (data.error) {
-                    output.innerHTML = `<div style="color: #ff6b6b;">Ошибка: ${data.reason}</div>`;
+                if (!ipwhoData.success) {
+                    output.innerHTML = `<div style="color: #ff6b6b;">Ошибка: ${ipwhoData.message || 'Неверный IP'}</div>`;
                     return;
                 }
 
+                // Определяем тип соединения
+                const connectionType = ipwhoData.connection?.domain ? 'Корпоративный' : 'Домашний';
+                const isVPN = ipwhoData.security?.is_vpn || ipApiData?.threat?.is_vpn || false;
+                const isProxy = ipwhoData.security?.is_proxy || ipApiData?.threat?.is_proxy || false;
+                const isTor = ipwhoData.security?.is_tor || ipApiData?.threat?.is_tor || false;
+                
                 output.innerHTML = `
-                    <div><strong>IP:</strong> ${data.ip}</div>
-                    <div><strong>Страна:</strong> ${data.country_name} (${data.country_code})</div>
-                    <div><strong>Регион:</strong> ${data.region}</div>
-                    <div><strong>Город:</strong> ${data.city}</div>
-                    <div><strong>Почтовый код:</strong> ${data.postal || 'N/A'}</div>
-                    <div><strong>Координаты:</strong> ${data.latitude}, ${data.longitude}</div>
-                    <div><strong>Провайдер:</strong> ${data.org}</div>
-                    <div><strong>Timezone:</strong> ${data.timezone}</div>
+                    <div style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">📍 Основная информация</div>
+                        <div><strong>IP адрес:</strong> ${ipwhoData.ip}</div>
+                        <div><strong>Тип:</strong> ${ipwhoData.type} (${connectionType})</div>
+                        <div><strong>Континент:</strong> ${ipwhoData.continent} (${ipwhoData.continent_code})</div>
+                        <div><strong>Страна:</strong> ${ipwhoData.country} (${ipwhoData.country_code})</div>
+                        <div><strong>Регион:</strong> ${ipwhoData.region}</div>
+                        <div><strong>Город:</strong> ${ipwhoData.city}</div>
+                        <div><strong>Почтовый код:</strong> ${ipwhoData.postal || 'N/A'}</div>
+                        <div><strong>Столица:</strong> ${ipwhoData.country_capital || 'N/A'}</div>
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">🌐 Сеть и провайдер</div>
+                        <div><strong>Провайдер (ISP):</strong> ${ipwhoData.connection?.isp || 'N/A'}</div>
+                        <div><strong>Организация:</strong> ${ipwhoData.connection?.org || 'N/A'}</div>
+                        <div><strong>Домен:</strong> ${ipwhoData.connection?.domain || 'N/A'}</div>
+                        <div><strong>ASN:</strong> ${ipwhoData.connection?.asn || 'N/A'}</div>
+                        ${ipApiData?.asn ? `<div><strong>AS Name:</strong> ${ipApiData.asn}</div>` : ''}
+                        ${ipApiData?.org ? `<div><strong>Network:</strong> ${ipApiData.org}</div>` : ''}
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">📍 Геолокация</div>
+                        <div><strong>Координаты:</strong> ${ipwhoData.latitude}, ${ipwhoData.longitude}</div>
+                        <div><strong>Точность:</strong> ${ipApiData?.latitude ? '±50км' : '±100км'}</div>
+                        <div><strong>Timezone:</strong> ${ipwhoData.timezone?.id || 'N/A'}</div>
+                        <div><strong>UTC Offset:</strong> ${ipwhoData.timezone?.utc || 'N/A'}</div>
+                        <div><strong>Текущее время:</strong> ${ipwhoData.timezone?.current_time || 'N/A'}</div>
+                        ${ipApiData?.languages ? `<div><strong>Языки:</strong> ${ipApiData.languages}</div>` : ''}
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">💰 Экономика</div>
+                        <div><strong>Валюта:</strong> ${ipwhoData.currency || 'N/A'} (${ipwhoData.currency_code || 'N/A'})</div>
+                        ${ipApiData?.currency_name ? `<div><strong>Название валюты:</strong> ${ipApiData.currency_name}</div>` : ''}
+                        <div><strong>Телефонный код:</strong> +${ipwhoData.calling_code || 'N/A'}</div>
+                        ${ipApiData?.country_population ? `<div><strong>Население страны:</strong> ${ipApiData.country_population.toLocaleString()}</div>` : ''}
+                        ${ipApiData?.country_area ? `<div><strong>Площадь страны:</strong> ${ipApiData.country_area.toLocaleString()} км²</div>` : ''}
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">🔒 Безопасность</div>
+                        <div><strong>VPN:</strong> <span style="color: ${isVPN ? '#ff6b6b' : '#51cf66'}">${isVPN ? 'Обнаружен ⚠️' : 'Не обнаружен ✓'}</span></div>
+                        <div><strong>Proxy:</strong> <span style="color: ${isProxy ? '#ff6b6b' : '#51cf66'}">${isProxy ? 'Обнаружен ⚠️' : 'Не обнаружен ✓'}</span></div>
+                        <div><strong>Tor:</strong> <span style="color: ${isTor ? '#ff6b6b' : '#51cf66'}">${isTor ? 'Обнаружен ⚠️' : 'Не обнаружен ✓'}</span></div>
+                        ${ipApiData?.threat?.is_anonymous ? `<div><strong>Анонимайзер:</strong> <span style="color: #ff6b6b">Да ⚠️</span></div>` : ''}
+                        ${ipApiData?.threat?.is_known_attacker ? `<div><strong>Известный атакующий:</strong> <span style="color: #ff6b6b">Да ⚠️</span></div>` : ''}
+                        ${ipApiData?.threat?.is_known_abuser ? `<div><strong>Известный нарушитель:</strong> <span style="color: #ff6b6b">Да ⚠️</span></div>` : ''}
+                    </div>
+                    
+                    <div>
+                        <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">🌍 Дополнительно</div>
+                        <div><strong>Флаг:</strong> ${ipwhoData.flag?.emoji || '🏳️'}</div>
+                        ${ipApiData?.country_tld ? `<div><strong>Домен страны:</strong> ${ipApiData.country_tld}</div>` : ''}
+                        ${ipApiData?.version ? `<div><strong>IP версия:</strong> IPv${ipApiData.version}</div>` : ''}
+                        <div><strong>Google Maps:</strong> <a href="https://www.google.com/maps?q=${ipwhoData.latitude},${ipwhoData.longitude}" target="_blank" style="color: #51cf66;">Открыть карту</a></div>
+                    </div>
                 `;
             } catch (error) {
-                output.innerHTML = `<div style="color: #ff6b6b;">Ошибка: ${error.message}</div>`;
+                output.innerHTML = `<div style="color: #ff6b6b;">Ошибка сети: ${error.message}</div>`;
             }
         });
 
-        // Enter key support
         ipInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 searchBtn.click();
             }
         });
+
+        // Phone number search
+        searchPhoneBtn.addEventListener('click', async () => {
+            const phone = phoneInput.value.trim();
+            if (!phone) {
+                phoneOutput.innerHTML = '<div style="color: #ff6b6b;">Введите номер телефона</div>';
+                return;
+            }
+
+            if (!phone.startsWith('+')) {
+                phoneOutput.innerHTML = '<div style="color: #ff6b6b;">Номер должен начинаться с +</div>';
+                return;
+            }
+
+            phoneOutput.innerHTML = '<div class="loading">Поиск данных...</div>';
+            
+            try {
+                // Используем numverify API для базовой информации
+                const cleanPhone = phone.replace(/\D/g, '');
+                
+                // Парсим номер
+                const countryCode = cleanPhone.substring(0, cleanPhone.length > 10 ? cleanPhone.length - 10 : 1);
+                const nationalNumber = cleanPhone.substring(countryCode.length);
+                
+                // Определяем страну по коду
+                const countryCodes = {
+                    '1': 'США/Канада', '7': 'Россия/Казахстан', '20': 'Египет', '27': 'ЮАР',
+                    '30': 'Греция', '31': 'Нидерланды', '32': 'Бельгия', '33': 'Франция',
+                    '34': 'Испания', '36': 'Венгрия', '39': 'Италия', '40': 'Румыния',
+                    '41': 'Швейцария', '43': 'Австрия', '44': 'Великобритания', '45': 'Дания',
+                    '46': 'Швеция', '47': 'Норвегия', '48': 'Польша', '49': 'Германия',
+                    '51': 'Перу', '52': 'Мексика', '53': 'Куба', '54': 'Аргентина',
+                    '55': 'Бразилия', '56': 'Чили', '57': 'Колумбия', '58': 'Венесуэла',
+                    '60': 'Малайзия', '61': 'Австралия', '62': 'Индонезия', '63': 'Филиппины',
+                    '64': 'Новая Зеландия', '65': 'Сингапур', '66': 'Таиланд', '81': 'Япония',
+                    '82': 'Южная Корея', '84': 'Вьетнам', '86': 'Китай', '90': 'Турция',
+                    '91': 'Индия', '92': 'Пакистан', '93': 'Афганистан', '94': 'Шри-Ланка',
+                    '95': 'Мьянма', '98': 'Иран', '212': 'Марокко', '213': 'Алжир',
+                    '216': 'Тунис', '218': 'Ливия', '220': 'Гамбия', '221': 'Сенегал',
+                    '222': 'Мавритания', '223': 'Мали', '224': 'Гвинея', '225': 'Кот-д\'Ивуар',
+                    '226': 'Буркина-Фасо', '227': 'Нигер', '228': 'Того', '229': 'Бенин',
+                    '230': 'Маврикий', '231': 'Либерия', '232': 'Сьерра-Леоне', '233': 'Гана',
+                    '234': 'Нигерия', '235': 'Чад', '236': 'ЦАР', '237': 'Камерун',
+                    '238': 'Кабо-Верде', '239': 'Сан-Томе', '240': 'Экваториальная Гвинея',
+                    '241': 'Габон', '242': 'Конго', '243': 'ДР Конго', '244': 'Ангола',
+                    '245': 'Гвинея-Бисау', '246': 'Барбадос', '248': 'Сейшелы', '249': 'Судан',
+                    '250': 'Руанда', '251': 'Эфиопия', '252': 'Сомали', '253': 'Джибути',
+                    '254': 'Кения', '255': 'Танзания', '256': 'Уганда', '257': 'Бурунди',
+                    '258': 'Мозамбик', '260': 'Замбия', '261': 'Мадагаскар', '262': 'Реюньон',
+                    '263': 'Зимбабве', '264': 'Намибия', '265': 'Малави', '266': 'Лесото',
+                    '267': 'Ботсвана', '268': 'Свазиленд', '269': 'Коморы', '290': 'Святая Елена',
+                    '291': 'Эритрея', '297': 'Аруба', '298': 'Фареры', '299': 'Гренландия',
+                    '350': 'Гибралтар', '351': 'Португалия', '352': 'Люксембург', '353': 'Ирландия',
+                    '354': 'Исландия', '355': 'Албания', '356': 'Мальта', '357': 'Кипр',
+                    '358': 'Финляндия', '359': 'Болгария', '370': 'Литва', '371': 'Латвия',
+                    '372': 'Эстония', '373': 'Молдова', '374': 'Армения', '375': 'Беларусь',
+                    '376': 'Андорра', '377': 'Монако', '378': 'Сан-Марино', '380': 'Украина',
+                    '381': 'Сербия', '382': 'Черногория', '383': 'Косово', '385': 'Хорватия',
+                    '386': 'Словения', '387': 'Босния', '389': 'Македония', '420': 'Чехия',
+                    '421': 'Словакия', '423': 'Лихтенштейн', '500': 'Фолкленды', '501': 'Белиз',
+                    '502': 'Гватемала', '503': 'Сальвадор', '504': 'Гондурас', '505': 'Никарагуа',
+                    '506': 'Коста-Рика', '507': 'Панама', '508': 'Сен-Пьер', '509': 'Гаити',
+                    '590': 'Гваделупа', '591': 'Боливия', '592': 'Гайана', '593': 'Эквадор',
+                    '594': 'Гвиана', '595': 'Парагвай', '596': 'Мартиника', '597': 'Суринам',
+                    '598': 'Уругвай', '599': 'Кюрасао', '670': 'Тимор', '672': 'Антарктида',
+                    '673': 'Бруней', '674': 'Науру', '675': 'Папуа', '676': 'Тонга',
+                    '677': 'Соломоновы', '678': 'Вануату', '679': 'Фиджи', '680': 'Палау',
+                    '681': 'Уоллис', '682': 'Острова Кука', '683': 'Ниуэ', '685': 'Самоа',
+                    '686': 'Кирибати', '687': 'Новая Каледония', '688': 'Тувалу', '689': 'Полинезия',
+                    '690': 'Токелау', '691': 'Микронезия', '692': 'Маршалловы', '850': 'КНДР',
+                    '852': 'Гонконг', '853': 'Макао', '855': 'Камбоджа', '856': 'Лаос',
+                    '880': 'Бангладеш', '886': 'Тайвань', '960': 'Мальдивы', '961': 'Ливан',
+                    '962': 'Иордания', '963': 'Сирия', '964': 'Ирак', '965': 'Кувейт',
+                    '966': 'Саудовская Аравия', '967': 'Йемен', '968': 'Оман', '970': 'Палестина',
+                    '971': 'ОАЭ', '972': 'Израиль', '973': 'Бахрейн', '974': 'Катар',
+                    '975': 'Бутан', '976': 'Монголия', '977': 'Непал', '992': 'Таджикистан',
+                    '993': 'Туркменистан', '994': 'Азербайджан', '995': 'Грузия', '996': 'Киргизия',
+                    '998': 'Узбекистан'
+                };
+
+                const country = countryCodes[countryCode] || 'Неизвестно';
+                
+                // Определяем тип номера
+                let numberType = 'Неизвестно';
+                if (nationalNumber.length === 10) {
+                    if (countryCode === '7') {
+                        const firstDigit = nationalNumber[0];
+                        if (firstDigit === '9') numberType = 'Мобильный';
+                        else if (['3', '4', '8'].includes(firstDigit)) numberType = 'Городской';
+                    } else if (countryCode === '1') {
+                        numberType = 'Мобильный/Городской';
+                    }
+                }
+                
+                phoneOutput.innerHTML = `
+                    <div style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">📱 Основная информация</div>
+                        <div><strong>Номер:</strong> ${phone}</div>
+                        <div><strong>Код страны:</strong> +${countryCode}</div>
+                        <div><strong>Страна:</strong> ${country}</div>
+                        <div><strong>Национальный номер:</strong> ${nationalNumber}</div>
+                        <div><strong>Тип номера:</strong> ${numberType}</div>
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">🔍 Анализ номера</div>
+                        <div><strong>Длина:</strong> ${cleanPhone.length} цифр</div>
+                        <div><strong>Формат:</strong> ${phone.match(/\+\d{1,3}[\s-]?\d{3}[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}/) ? 'Корректный' : 'Нестандартный'}</div>
+                        <div><strong>Валидность:</strong> ${cleanPhone.length >= 10 && cleanPhone.length <= 15 ? '<span style="color: #51cf66">Валидный ✓</span>' : '<span style="color: #ff6b6b">Невалидный ✗</span>'}</div>
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">🌐 Дополнительно</div>
+                        <div><strong>Часовой пояс:</strong> ${countryCode === '7' ? 'UTC+3 до UTC+12' : 'Зависит от региона'}</div>
+                        <div><strong>Формат набора:</strong> ${phone}</div>
+                        <div><strong>Международный формат:</strong> ${phone.replace(/(\+\d{1,3})(\d{3})(\d{3})(\d{2})(\d{2})/, '$1 $2 $3 $4 $5')}</div>
+                    </div>
+                    
+                    <div>
+                        <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">⚠️ Примечание</div>
+                        <div style="font-size: 0.8rem; opacity: 0.7;">Информация получена на основе анализа номера. Для получения детальных данных о владельце требуются специальные сервисы и разрешения.</div>
+                    </div>
+                `;
+            } catch (error) {
+                phoneOutput.innerHTML = `<div style="color: #ff6b6b;">Ошибка: ${error.message}</div>`;
+            }
+        });
+
+        phoneInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                searchPhoneBtn.click();
+            }
+        });
+
+        // New tools buttons
+        document.getElementById('passwordBtn').addEventListener('click', () => openModal('passwordModal'));
+        document.getElementById('domainBtn').addEventListener('click', () => openModal('domainModal'));
+        document.getElementById('emailBtn').addEventListener('click', () => openModal('emailModal'));
+        document.getElementById('hashBtn').addEventListener('click', () => openModal('hashModal'));
+        
+        // Placeholder for other tools
+        document.getElementById('urlBtn').addEventListener('click', () => {
+            alert('🔗 URL Shortener - В разработке!');
+        });
+        document.getElementById('speedBtn').addEventListener('click', () => {
+            alert('📊 Speed Test - В разработке!');
+        });
+        document.getElementById('proxyBtn').addEventListener('click', () => {
+            alert('🌐 Proxy Checker - В разработке!');
+        });
     </script>
+    <script src="tools.js"></script>
 </body>
 </html>
